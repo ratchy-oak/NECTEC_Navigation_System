@@ -3,45 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>NECTEC Navigation System</title>
+    <script src="https://unpkg.com/html5-qrcode"></script>
 </head>
 <body>
-    <div id="you-qr-result"></div>
-    <h1>scan qr html</h1>
-    <div style="display: flex; justify-content: center;">
-        <div id="my-qr-reader" style="width: 500px;">
-        </div>
+    <div style="display: flex; justify-content: center; margin-top: 220px;">
+        <div id="qr-reader" style="width:500px"></div>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <div id="qr-reader-results"></div>
     </div>
 
-    <script src="https://unpkg.com/html5-qrcode"></script>
     <script>
-        function domReady(fn) {
-            if (document.readyState === "complete" || document.readyState == "interactive") {
-                setTimeout(fn, 1)
+        function docReady(fn) {
+            if (document.readyState === "complete" || document.readyState === "interactive") {
+                setTimeout(fn, 1);
             } else {
-                document.addEventListener("DOMContentLoaded", fn)
+                document.addEventListener("DOMContentLoaded", fn);
             }
         }
 
-        domReady(function() {
-            var myqr = document.getElementById('you-qr-result')
-            var lastResult, countResults = 0;
+        docReady(function () {
+            var myqr = document.getElementById('qr-reader-results')
 
             function onScanSuccess(decodeText, decodeResult) {
-                if (decodeText !== lastResult) {
-                    ++countResults;
-                    lastResult = decodeText;
-
-                    alert("Your Qr is : " + decodeText, decodeResult)
-
-                    myqr.innerHTML = ` you scan ${countResults} : ${decodeText}`
-                }
+                alert(decodeText, decodeResult)
+                myqr.innerHTML = `Scan result : ${decodeText}`
             }
 
-            var htmlscanner = new Html5QrcodeScanner("my-qr-reader", {fps: 10, qrbox: 250})
-
+            var htmlscanner = new Html5QrcodeScanner("qr-reader", {fps: 10, qrbox: 250})
             htmlscanner.render(onScanSuccess)
-        })
+        });
     </script>
 </body>
 </html>
