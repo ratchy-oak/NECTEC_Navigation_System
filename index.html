@@ -9,22 +9,36 @@
     <script src="https://unpkg.com/html5-qrcode"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
-<body>
+<body class="text-center">
+    <!-- Scanner -->
     <div id="scanner" style="display: block;">
-        <div style="display: flex; justify-content: center;">
+        <div class="mt-5" style="display: flex; justify-content: center;">
             <div id="qr-reader" style="width:500px"></div>
         </div>
+        <h1 class="fw-bold mt-3">Scan Location QRcode</h1>
     </div>
+
+    <!-- Select/Change Location -->
     <div id="location" style="display: none;">
-        <div style="display: flex; justify-content: center;" class="mt-5">
-            <div class="column">
-                <span class="btn btn-outline-light me-2">Change location</span>
-                <button type="button" class="btn btn-warning">Find the way</button>
-            </div>
+        <div class="container">
+            <form class="form">    
+                    <input name="startLocation" id="startLocation" type="hidden">
+                    <select name="endLocation" class="form-control mt-3" style="appearance: listbox !important;">
+                        <option disabled selected>Select target position</option>
+                        <option value="test">test</option>
+                    </select>
+                    <div class="column">
+                        <button class="btn btn-outline-light mt-3" onclick="openscanner()">Change start location</button>
+                        <button type="submit" class="btn btn-warning mt-3">Find the shortest path</button>
+                    </div>
+            </form>
         </div>
     </div>
 
     <script>
+        // Scanner
+        var lastResult;
+        var inputValue = document.getElementById('startLocation')
         function docReady(fn) {
             if (document.readyState === "complete" || document.readyState === "interactive") {
                 setTimeout(fn, 1);
@@ -32,22 +46,43 @@
                 document.addEventListener("DOMContentLoaded", fn);
             }
         }
-
         docReady(function () {
             var resultContainer = document.getElementById('qr-reader-results');
-            var lastResult;
             function onScanSuccess(decodedText, decodedResult) {
                 if (decodedText !== lastResult) {
                     lastResult = decodedText;
                     console.log(`Scan result ${decodedText}`, decodedResult);
+                    inputValue.value = lastResult;
                     $('#location').show();
                     $('#scanner').hide();
                 }
             }
-
-            var html5QrcodeScanner = new Html5QrcodeScanner(
-                "qr-reader", { fps: 10, qrbox: 250 });
+            var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250 });
             html5QrcodeScanner.render(onScanSuccess);
+        });
+
+        // Change location
+        function openscanner() {
+            $('#location').hide();
+            $('#scanner').show();
+            lastResult = null;
+        }
+
+        // Find the shortest path
+        const formEl = document.querySelector('.form');
+        formEl.addEventListener('submit', event => {
+            event.preventDefault();
+            const formData = new FormData(formEl);
+            const data = Object.fromEntries(formData);
+            fetch('https:/reqres.in/api/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(res => res.json())
+              .then(data => console.log(data))
+              .catch(error => console.log(error));
         });
     </script>
 </body>
