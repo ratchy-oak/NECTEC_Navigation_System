@@ -20,17 +20,25 @@
 
     <!-- Select/Change Location -->
     <div id="location" style="display: none;">
-        <div class="container">
+        <div class="container mt-5">
+            <svg style="position: absolute;">
+                <polyline points="10,10 100,100" style="fill: none; stroke: red; stroke-width: 3;" />
+            </svg>
+            <img src="picture/_10ceb8a0-3fe3-11e9-a74a-d94b808df36a.jpg" style="width: 100%;">
+        </div>
+        <div class="container mt-3">
             <form class="form">    
-                    <input name="startLocation" id="startLocation" type="hidden">
-                    <select name="endLocation" class="form-control mt-3" style="appearance: listbox !important;">
+                <input name="startLocation" id="startLocation" type="hidden">
+                <div class="container">
+                    <select name="endLocation" class="form-control" style="appearance: listbox !important;">
                         <option disabled selected>Select target position</option>
                         <option value="test">test</option>
                     </select>
-                    <div class="column">
-                        <button class="btn btn-outline-light mt-3" onclick="openscanner()">Change start location</button>
-                        <button type="submit" class="btn btn-warning mt-3">Find the shortest path</button>
-                    </div>
+                </div>
+                <div class="column">
+                    <button class="btn btn-outline-light mt-4" onclick="openscanner()">Change start location</button>
+                    <button type="submit" class="btn btn-warning mt-4">Find the shortest path</button>
+                </div>
             </form>
         </div>
     </div>
