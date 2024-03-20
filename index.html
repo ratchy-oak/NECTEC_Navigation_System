@@ -12,18 +12,24 @@
 <body class="text-center">
     <!-- Scanner -->
     <div id="scanner" style="display: block;">
+        <h1 class="fw-bold mt-5">Scan Location QRcode</h1>
         <div class="mt-5" style="display: flex; justify-content: center;">
             <div id="qr-reader" style="width:500px"></div>
         </div>
-        <h1 class="fw-bold mt-3">Scan Location QRcode</h1>
     </div>
 
     <!-- Select/Change Location -->
     <div id="location" style="display: none;">
         <div class="container mt-5">
-            <svg style="position: absolute;">
-                <polyline points="10,10 100,100" style="fill: none; stroke: red; stroke-width: 3;" />
-            </svg>
+            <div style="position: absolute; width: 80vw;">
+                <svg viewBox="0 0 700 300" preserveAspectRatio="xMidYMid meet">
+                    <circle r="2" cx="46" cy="88.5" fill="red" />
+                    <circle r="2" cx="75" cy="88.5" fill="red" />
+                    <circle r="2" cx="99" cy="76" fill="red" />
+                    <circle r="2" cx="104" cy="100" fill="red" />
+                    <circle r="2" cx="128" cy="95" fill="red" />
+                </svg>
+            </div>
             <img src="picture/_10ceb8a0-3fe3-11e9-a74a-d94b808df36a.jpg" style="width: 100%;">
         </div>
         <div class="container mt-3">
@@ -76,7 +82,7 @@
             lastResult = null;
         }
 
-        // Find the shortest path
+        // POST and GET to find the shortest path
         const formEl = document.querySelector('.form');
         formEl.addEventListener('submit', event => {
             event.preventDefault();
