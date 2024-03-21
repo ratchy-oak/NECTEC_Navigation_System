@@ -11,39 +11,74 @@
 </head>
 <body class="text-center">
     <!-- Scanner -->
-    <div id="scanner" style="display: block;">
+    <div id="scanner" style="display: none;">
         <h1 class="fw-bold mt-5">Scan Location QRcode</h1>
         <div class="mt-5" style="display: flex; justify-content: center;">
             <div id="qr-reader" style="width:500px"></div>
         </div>
     </div>
 
-    <!-- Select/Change Location -->
-    <div id="location" style="display: none;">
+    <div id="location" style="display: block;">
+        <!-- Map -->
         <div class="container mt-5">
             <div style="position: absolute; width: 80vw;">
-                <svg viewBox="0 0 700 300" preserveAspectRatio="xMidYMid meet">
-                    <circle r="2" cx="46" cy="88.5" fill="red" />
-                    <circle r="2" cx="75" cy="88.5" fill="red" />
-                    <circle r="2" cx="99" cy="76" fill="red" />
-                    <circle r="2" cx="104" cy="100" fill="red" />
-                    <circle r="2" cx="128" cy="95" fill="red" />
+                <svg viewBox="0 0 700 300">
+                    <rect width="700" height="300"/>
+                    <!-- Node -->
+                    <circle id="room525" style="display: block;" r="3" cx="187" cy="105" fill="blue" />
+                    <circle id="room508" style="display: block;" r="3" cx="207" cy="88" fill="blue" />
+                    <circle id="toiletMenLeftWing" style="display: block;" r="3" cx="207" cy="186" fill="blue" />
+                    <circle id="toiletWomenLeftWing" style="display: block;" r="3" cx="207" cy="218" fill="blue" />
+                    <circle id="room522" style="display: block;" r="3" cx="207" cy="218" fill="blue" />
+                    <circle id="room509" style="display: block;" r="3" cx="234" cy="118" fill="blue" />
+                    <circle id="room521" style="display: block;" r="3" cx="295" cy="186" fill="blue" />
+                    <circle id="room510" style="display: block;" r="3" cx="378" cy="118" fill="blue" />
+                    <circle id="room520" style="display: block;" r="3" cx="377" cy="186" fill="blue" />
+                    <circle id="Lobby" style="display: block;" r="3" cx="401" cy="152" fill="blue" />
+                    <circle id="room519" style="display: block;" r="3" cx="425" cy="186" fill="blue" />
+                    <circle id="room511" style="display: block;" r="3" cx="458" cy="118" fill="blue" />
+                    <circle id="room512" style="display: block;" r="3" cx="522" cy="118" fill="blue" />
+                    <circle id="room518B" style="display: block;" r="3" cx="529" cy="186" fill="blue" />
+                    <circle id="room518A" style="display: block;" r="3" cx="570" cy="186" fill="blue" />
+                    <circle id="cornerRightWingTop" style="display: block;" r="3" cx="598" cy="118" fill="blue" />
+                    <circle id="cornerRightWingMid" style="display: block;" r="3" cx="598" cy="145" fill="blue" />
+                    <circle id="cornerRightWingBottom" style="display: block;" r="3" cx="598" cy="186" fill="blue" />
+                    <circle id="Kitchen" style="display: block;" r="3" cx="623" cy="138" fill="blue" />
                 </svg>
             </div>
-            <img src="picture/_10ceb8a0-3fe3-11e9-a74a-d94b808df36a.jpg" style="width: 100%;">
+            <img src="picture/_10ceb8a0-3fe3-11e9-a74a-d94b808df36a.jpg" style="width: 80vw;">
         </div>
+        <!-- Select/Change Location -->
         <div class="container mt-3">
             <form class="form">    
-                <input name="startLocation" id="startLocation" type="hidden">
+                <input name="qr1" id="qr1" type="hidden">
                 <div class="container">
-                    <select name="endLocation" class="form-control" style="appearance: listbox !important;">
+                    <select name="qr2" id="qr2" class="form-control" style="appearance: listbox !important;">
                         <option disabled selected>Select target position</option>
-                        <option value="test">test</option>
+                        <option value="P599802764">room525</option>
+                        <option value="P599802705">room508</option>
+                        <option value="N1973127510">toiletMenLeftWing</option>
+                        <option value="P296532050">toiletWomenLeftWing</option>
+                        <option value="P599802761">room522</option>
+                        <option value="P599802706">room509</option>
+                        <option value="P599802760">room521</option>
+                        <option value="P599802728">room510</option>
+                        <option value="P599802759">room520</option>
+                        <option value="N503755643">Lobby</option>
+                        <option value="P599802737">room519</option>
+                        <option value="P599802729">room511</option>
+                        <option value="P599802730">room512</option>
+                        <option value="P1414015698">room518B</option>
+                        <option value="P1414015697">room518A</option>
+                        <option value="P1745006100">cornerRightWingTop</option>
+                        <option value="P1744999175">cornerRightWingMid</option>
+                        <option value="N1322516212">cornerRightWingBottom</option>
+                        <option value="P179493011">Kitchen</option>
                     </select>
                 </div>
                 <div class="column">
-                    <button class="btn btn-outline-light mt-4" onclick="openscanner()">Change start location</button>
-                    <button type="submit" class="btn btn-warning mt-4">Find the shortest path</button>
+                    <button class="btn btn-outline-light btn-lg mt-4" onclick="openscanner()">Change start location</button>
+                    <button type="submit" class="btn btn-warning btn-lg mt-4">Find the shortest path</button>
                 </div>
             </form>
         </div>
@@ -52,7 +87,7 @@
     <script>
         // Scanner
         var lastResult;
-        var inputValue = document.getElementById('startLocation')
+        var inputValue = document.getElementById('qr1')
         function docReady(fn) {
             if (document.readyState === "complete" || document.readyState === "interactive") {
                 setTimeout(fn, 1);
@@ -75,7 +110,7 @@
             html5QrcodeScanner.render(onScanSuccess);
         });
 
-        // Change location
+        // Change start location
         function openscanner() {
             $('#location').hide();
             $('#scanner').show();
