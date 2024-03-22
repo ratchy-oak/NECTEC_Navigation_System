@@ -11,49 +11,50 @@
 </head>
 <body class="text-center">
     <!-- Scanner -->
-    <div id="scanner" style="display: none;">
+    <div id="scanner" style="display: block;">
         <h1 class="fw-bold mt-5">Scan Location QRcode</h1>
         <div class="mt-5" style="display: flex; justify-content: center;">
             <div id="qr-reader" style="width:500px"></div>
         </div>
     </div>
 
-    <div id="location" style="display: block;">
+    <div id="location" style="display: none;">
         <!-- Map -->
         <div class="container mt-5">
             <div style="position: absolute; width: 80vw;">
                 <svg viewBox="0 0 700 300">
-                    <rect width="700" height="300"/>
+                    <!-- <rect width="700" height="300"/> -->
                     <!-- Node -->
-                    <circle id="room525" style="display: block;" r="3" cx="187" cy="105" fill="blue" />
-                    <circle id="room508" style="display: block;" r="3" cx="207" cy="88" fill="blue" />
-                    <circle id="toiletMenLeftWing" style="display: block;" r="3" cx="207" cy="186" fill="blue" />
-                    <circle id="toiletWomenLeftWing" style="display: block;" r="3" cx="207" cy="218" fill="blue" />
-                    <circle id="room522" style="display: block;" r="3" cx="207" cy="218" fill="blue" />
-                    <circle id="room509" style="display: block;" r="3" cx="234" cy="118" fill="blue" />
-                    <circle id="room521" style="display: block;" r="3" cx="295" cy="186" fill="blue" />
-                    <circle id="room510" style="display: block;" r="3" cx="378" cy="118" fill="blue" />
-                    <circle id="room520" style="display: block;" r="3" cx="377" cy="186" fill="blue" />
-                    <circle id="Lobby" style="display: block;" r="3" cx="401" cy="152" fill="blue" />
-                    <circle id="room519" style="display: block;" r="3" cx="425" cy="186" fill="blue" />
-                    <circle id="room511" style="display: block;" r="3" cx="458" cy="118" fill="blue" />
-                    <circle id="room512" style="display: block;" r="3" cx="522" cy="118" fill="blue" />
-                    <circle id="room518B" style="display: block;" r="3" cx="529" cy="186" fill="blue" />
-                    <circle id="room518A" style="display: block;" r="3" cx="570" cy="186" fill="blue" />
-                    <circle id="cornerRightWingTop" style="display: block;" r="3" cx="598" cy="118" fill="blue" />
-                    <circle id="cornerRightWingMid" style="display: block;" r="3" cx="598" cy="145" fill="blue" />
-                    <circle id="cornerRightWingBottom" style="display: block;" r="3" cx="598" cy="186" fill="blue" />
-                    <circle id="Kitchen" style="display: block;" r="3" cx="623" cy="138" fill="blue" />
+                    <circle id="room525" style="display: none;" r="3" cx="187" cy="105" fill="blue" />
+                    <circle id="room508" style="display: none;" r="3" cx="207" cy="88" fill="blue" />
+                    <circle id="toiletMenLeftWing" style="display: none;" r="3" cx="207" cy="186" fill="blue" />
+                    <circle id="toiletWomenLeftWing" style="display: none;" r="3" cx="207" cy="218" fill="blue" />
+                    <circle id="room522" style="display: none;" r="3" cx="207" cy="218" fill="blue" />
+                    <circle id="room509" style="display: none;" r="3" cx="234" cy="118" fill="blue" />
+                    <circle id="room521" style="display: none;" r="3" cx="295" cy="186" fill="blue" />
+                    <circle id="room510" style="display: none;" r="3" cx="378" cy="118" fill="blue" />
+                    <circle id="room520" style="display: none;" r="3" cx="377" cy="186" fill="blue" />
+                    <circle id="Lobby" style="display: none;" r="3" cx="401" cy="152" fill="blue" />
+                    <circle id="room519" style="display: none;" r="3" cx="425" cy="186" fill="blue" />
+                    <circle id="room511" style="display: none;" r="3" cx="458" cy="118" fill="blue" />
+                    <circle id="room512" style="display: none;" r="3" cx="522" cy="118" fill="blue" />
+                    <circle id="room518B" style="display: none;" r="3" cx="529" cy="186" fill="blue" />
+                    <circle id="room518A" style="display: none;" r="3" cx="570" cy="186" fill="blue" />
+                    <circle id="cornerRightWingTop" style="display: none;" r="3" cx="598" cy="118" fill="blue" />
+                    <circle id="cornerRightWingMid" style="display: none;" r="3" cx="598" cy="145" fill="blue" />
+                    <circle id="cornerRightWingBottom" style="display: none;" r="3" cx="598" cy="186" fill="blue" />
+                    <circle id="Kitchen" style="display: none;" r="3" cx="623" cy="138" fill="blue" />
                 </svg>
             </div>
             <img src="picture/_10ceb8a0-3fe3-11e9-a74a-d94b808df36a.jpg" style="width: 80vw;">
         </div>
+
         <!-- Select/Change Location -->
         <div class="container mt-3">
             <form class="form">    
                 <input name="qr1" id="qr1" type="hidden">
                 <div class="container">
-                    <select name="qr2" id="qr2" class="form-control" style="appearance: listbox !important;">
+                    <select name="qr2" id="qr2" class="form-control" style="appearance: listbox !important;" onchange="showNode(this)">
                         <option disabled selected>Select target position</option>
                         <option value="P599802764">room525</option>
                         <option value="P599802705">room508</option>
@@ -78,7 +79,7 @@
                 </div>
                 <div class="column">
                     <button class="btn btn-outline-light btn-lg mt-4" onclick="openscanner()">Change start location</button>
-                    <button type="submit" class="btn btn-warning btn-lg mt-4">Find the shortest path</button>
+                    <button type="submit" class="btn btn-warning btn-lg mt-4" id="findTheWay" style="display: none;">Find the shortest path</button>
                 </div>
             </form>
         </div>
@@ -110,6 +111,113 @@
             html5QrcodeScanner.render(onScanSuccess);
         });
 
+        // Select end location
+        function showNode(select) {
+            // Button
+            if (select.value == null) {
+                $('#findTheWay').hide();
+            } else {
+                $('#findTheWay').show();
+            }
+
+            // Location
+            if (select.value == "P599802764") {
+                $('#room525').show();
+            } else {
+                $('#room525').hide();
+            }
+            if (select.value == "P599802705") {
+                $('#room508').show();
+            } else {
+                $('#room508').hide();
+            }
+            if (select.value == "N1973127510") {
+                $('#toiletMenLeftWing').show();
+            } else {
+                $('#toiletMenLeftWing').hide();
+            }
+            if (select.value == "P296532050") {
+                $('#toiletWomenLeftWing').show();
+            } else {
+                $('#toiletWomenLeftWing').hide();
+            }
+            if (select.value == "P599802761") {
+                $('#room522').show();
+            } else {
+                $('#room522').hide();
+            }
+            if (select.value == "P599802706") {
+                $('#room509').show();
+            } else {
+                $('#room509').hide();
+            }
+            if (select.value == "P599802760") {
+                $('#room521').show();
+            } else {
+                $('#room521').hide();
+            }
+            if (select.value == "P599802728") {
+                $('#room510').show();
+            } else {
+                $('#room510').hide();
+            }
+            if (select.value == "P599802759") {
+                $('#room520').show();
+            } else {
+                $('#room520').hide();
+            }
+            if (select.value == "N503755643") {
+                $('#Lobby').show();
+            } else {
+                $('#Lobby').hide();
+            }
+            if (select.value == "P599802737") {
+                $('#room519').show();
+            } else {
+                $('#room519').hide();
+            }
+            if (select.value == "P599802729") {
+                $('#room511').show();
+            } else {
+                $('#room511').hide();
+            }
+            if (select.value == "P599802730") {
+                $('#room512').show();
+            } else {
+                $('#room512').hide();
+            }
+            if (select.value == "P1414015698") {
+                $('#room518B').show();
+            } else {
+                $('#room518B').hide();
+            }
+            if (select.value == "P1414015697") {
+                $('#room518A').show();
+            } else {
+                $('#room518A').hide();
+            }
+            if (select.value == "P1745006100") {
+                $('#cornerRightWingTop').show();
+            } else {
+                $('#cornerRightWingTop').hide();
+            }
+            if (select.value == "P1744999175") {
+                $('#cornerRightWingMid').show();
+            } else {
+                $('#cornerRightWingMid').hide();
+            }
+            if (select.value == "N1322516212") {
+                $('#cornerRightWingBottom').show();
+            } else {
+                $('#cornerRightWingBottom').hide();
+            }
+            if (select.value == "P179493011") {
+                $('#Kitchen').show();
+            } else {
+                $('#Kitchen').hide();
+            }
+        } 
+
         // Change start location
         function openscanner() {
             $('#location').hide();
@@ -118,21 +226,6 @@
         }
 
         // POST and GET to find the shortest path
-        const formEl = document.querySelector('.form');
-        formEl.addEventListener('submit', event => {
-            event.preventDefault();
-            const formData = new FormData(formEl);
-            const data = Object.fromEntries(formData);
-            fetch('https:/reqres.in/api/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            }).then(res => res.json())
-              .then(data => console.log(data))
-              .catch(error => console.log(error));
-        });
     </script>
 </body>
 </html>
