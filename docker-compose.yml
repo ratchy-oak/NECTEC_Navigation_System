@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  #navigaion-qr
+  app:
+    image: sanpechuda/navigation-qr
+    working_dir: /usr/src/app
+    environment:
+      NODE_ENV: development
+      #redisServer: '203.185.137.212'
+      #redisPort: 10005
+      #redisPass: '@1UGoD0RD@pS%Dwr%1Hi'
+    ports:
+      - 3000:3000
+    container_name: navigation-qr
+    restart: always
+    #command: yarn run dev
+    command: pm2-runtime start ecosystem.config.js
+    #command: pm2 start ./socket/_forward.js
+    # networks:
+    #   - my_tdoa_network
+
+# networks:
+#   my_tdoa_network:
+#     external:
+#       name: unainet
