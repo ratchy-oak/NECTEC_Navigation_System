@@ -12,7 +12,7 @@
 <body class="text-center">
     <!-- Scanner display -->
     <div id="scanner" style="display: block;">
-        <h1 class="fw-bold mt-5">Scan Start Location QRcode</h1>
+        <h1 class="fw-bold mt-5">Scan Location QRcode</h1>
         <div class="mt-5" style="display: flex; justify-content: center;">
             <div id="qr-reader" style="width:500px"></div>
         </div>
@@ -20,11 +20,11 @@
 
     <!-- Map display -->
     <div id="location" style="display: none;">
-        <!-- Node on map -->
+        <!-- Node and Graph on map -->
         <div class="container mt-5">
             <div style="position: absolute; width: 80vw;">
                 <svg viewBox="0 0 700 300">
-                    <!-- Shortest Path -->
+                    <!-- Graph -->
                     <polyline id="ab" points="187,105 207,88" style="fill: none; stroke: blue; stroke-width: 2; display: none;" />
                     <polyline id="bc" points="207,88 207,186" style="fill: none; stroke: blue; stroke-width: 2; display: none;" />
                     <polyline id="cd" points="207,186 207,218" style="fill: none; stroke: blue; stroke-width: 2; display: none;" />
@@ -50,46 +50,26 @@
                     <polyline id="or" points="570,186 598,186" style="fill: none; stroke: blue; stroke-width: 2; display: none;" />
                     <polyline id="qr" points="598,145 598,186" style="fill: none; stroke: blue; stroke-width: 2; display: none;" />
                     <polyline id="qs" points="598,145 623,138" style="fill: none; stroke: blue; stroke-width: 2; display: none;" />
-                    <!-- Start location -->
-                    <circle id="room525Start" style="display: none;" r="3" cx="187" cy="105" fill="green" />
-                    <circle id="room508Start" style="display: none;" r="3" cx="207" cy="88" fill="green" />
-                    <circle id="toiletMenLeftWingStart" style="display: none;" r="3" cx="207" cy="186" fill="green" />
-                    <circle id="toiletWomenLeftWingStart" style="display: none;" r="3" cx="207" cy="218" fill="green" />
-                    <circle id="room522Start" style="display: none;" r="3" cx="207" cy="218" fill="green" />
-                    <circle id="room509Start" style="display: none;" r="3" cx="234" cy="118" fill="green" />
-                    <circle id="room521Start" style="display: none;" r="3" cx="295" cy="186" fill="green" />
-                    <circle id="room510Start" style="display: none;" r="3" cx="378" cy="118" fill="green" />
-                    <circle id="room520Start" style="display: none;" r="3" cx="377" cy="186" fill="green" />
-                    <circle id="LobbyStart" style="display: none;" r="3" cx="401" cy="152" fill="green" />
-                    <circle id="room519Start" style="display: none;" r="3" cx="425" cy="186" fill="green" />
-                    <circle id="room511Start" style="display: none;" r="3" cx="458" cy="118" fill="green" />
-                    <circle id="room512Start" style="display: none;" r="3" cx="522" cy="118" fill="green" />
-                    <circle id="room518BStart" style="display: none;" r="3" cx="529" cy="186" fill="green" />
-                    <circle id="room518AStart" style="display: none;" r="3" cx="570" cy="186" fill="green" />
-                    <circle id="cornerRightWingTopStart" style="display: none;" r="3" cx="598" cy="118" fill="green" />
-                    <circle id="cornerRightWingMidStart" style="display: none;" r="3" cx="598" cy="145" fill="green" />
-                    <circle id="cornerRightWingBottomStart" style="display: none;" r="3" cx="598" cy="186" fill="green" />
-                    <circle id="KitchenStart" style="display: none;" r="3" cx="623" cy="138" fill="green" />
-                    <!-- End location -->
-                    <circle id="room525End" style="display: none;" r="3" cx="187" cy="105" fill="red" />
-                    <circle id="room508End" style="display: none;" r="3" cx="207" cy="88" fill="red" />
-                    <circle id="toiletMenLeftWingEnd" style="display: none;" r="3" cx="207" cy="186" fill="red" />
-                    <circle id="toiletWomenLeftWingEnd" style="display: none;" r="3" cx="207" cy="218" fill="red" />
-                    <circle id="room522End" style="display: none;" r="3" cx="207" cy="218" fill="red" />
-                    <circle id="room509End" style="display: none;" r="3" cx="234" cy="118" fill="red" />
-                    <circle id="room521End" style="display: none;" r="3" cx="295" cy="186" fill="red" />
-                    <circle id="room510End" style="display: none;" r="3" cx="378" cy="118" fill="red" />
-                    <circle id="room520End" style="display: none;" r="3" cx="377" cy="186" fill="red" />
-                    <circle id="LobbyEnd" style="display: none;" r="3" cx="401" cy="152" fill="red" />
-                    <circle id="room519End" style="display: none;" r="3" cx="425" cy="186" fill="red" />
-                    <circle id="room511End" style="display: none;" r="3" cx="458" cy="118" fill="red" />
-                    <circle id="room512End" style="display: none;" r="3" cx="522" cy="118" fill="red" />
-                    <circle id="room518BEnd" style="display: none;" r="3" cx="529" cy="186" fill="red" />
-                    <circle id="room518AEnd" style="display: none;" r="3" cx="570" cy="186" fill="red" />
-                    <circle id="cornerRightWingTopEnd" style="display: none;" r="3" cx="598" cy="118" fill="red" />
-                    <circle id="cornerRightWingMidEnd" style="display: none;" r="3" cx="598" cy="145" fill="red" />
-                    <circle id="cornerRightWingBottomEnd" style="display: none;" r="3" cx="598" cy="186" fill="red" />
-                    <circle id="KitchenEnd" style="display: none;" r="3" cx="623" cy="138" fill="red" />
+                    <!-- Node -->
+                    <circle id="room525Node" style="display: none;" r="3" cx="187" cy="105" fill="green" />
+                    <circle id="room508Node" style="display: none;" r="3" cx="207" cy="88" fill="green" />
+                    <circle id="toiletMenLeftWingNode" style="display: none;" r="3" cx="207" cy="186" fill="green" />
+                    <circle id="toiletWomenLeftWingNode" style="display: none;" r="3" cx="207" cy="218" fill="green" />
+                    <circle id="room522Node" style="display: none;" r="3" cx="207" cy="218" fill="green" />
+                    <circle id="room509Node" style="display: none;" r="3" cx="234" cy="118" fill="green" />
+                    <circle id="room521Node" style="display: none;" r="3" cx="295" cy="186" fill="green" />
+                    <circle id="room510Node" style="display: none;" r="3" cx="378" cy="118" fill="green" />
+                    <circle id="room520Node" style="display: none;" r="3" cx="377" cy="186" fill="green" />
+                    <circle id="LobbyNode" style="display: none;" r="3" cx="401" cy="152" fill="green" />
+                    <circle id="room519Node" style="display: none;" r="3" cx="425" cy="186" fill="green" />
+                    <circle id="room511Node" style="display: none;" r="3" cx="458" cy="118" fill="green" />
+                    <circle id="room512Node" style="display: none;" r="3" cx="522" cy="118" fill="green" />
+                    <circle id="room518BNode" style="display: none;" r="3" cx="529" cy="186" fill="green" />
+                    <circle id="room518ANode" style="display: none;" r="3" cx="570" cy="186" fill="green" />
+                    <circle id="cornerRightWingTopNode" style="display: none;" r="3" cx="598" cy="118" fill="green" />
+                    <circle id="cornerRightWingMidNode" style="display: none;" r="3" cx="598" cy="145" fill="green" />
+                    <circle id="cornerRightWingBottomNode" style="display: none;" r="3" cx="598" cy="186" fill="green" />
+                    <circle id="KitchenNode" style="display: none;" r="3" cx="623" cy="138" fill="green" />
                 </svg>
             </div>
             <img src="picture/map.jpg" style="width: 80vw;">
@@ -100,7 +80,7 @@
             <form class="form">    
                 <input name="qr1" id="qr1" type="hidden">
                 <div class="container">
-                    <select name="qr2" id="qr2" class="form-control" style="appearance: listbox !important;" onchange="showEndNode()">
+                    <select name="qr2" id="qr2" class="form-control" style="appearance: listbox !important;" onchange="showNode()">
                         <option value="null" disabled selected>Select target position</option>
                         <option id="room525" value="P599802764">room525</option>
                         <option id="room508" value="P599802705">room508</option>
@@ -126,16 +106,18 @@
                 <div class="column">
                     <button type="button" class="btn btn-danger btn-lg mt-4" onclick="window.location.reload();">Change start location</button>
                     <button type="submit" id="runButton" class="btn btn-warning btn-lg mt-4" style="display: none;">Find the shortest path</button>
-                    <button type="button" id="checkInButton" class="btn btn-outline-light btn-lg mt-4" style="display: none;">Check-in current location</button>
+                    <button type="button" id="checkInButton" class="btn btn-outline-light btn-lg mt-4" style="display: none;" onclick="$('#scanner').show(), $('#location').hide(), secondTimeRun = false;">Check-in current location</button>
                 </div>
             </form>
         </div>
     </div>
 
     <script>
-        // Start and End location value
-        var inputValue = document.getElementById('qr1')
-        var selectValue = document.getElementById('qr2')
+        // Start and End and Current location value
+        var inputValue = document.getElementById('qr1');
+        var selectValue = document.getElementById('qr2');
+        var currentValue;
+        var inputName;
 
         // QRcode decoder
         function docReady(fn) {
@@ -145,208 +127,80 @@
                 document.addEventListener("DOMContentLoaded", fn);
             }
         }
+        var secondTimeRun = true;
         docReady(function () {
             function onScanSuccess(decodedText, decodedResult) {
-                if (decodedText !== inputValue.value) {
+                if (decodedText != inputValue.value) {
                     inputValue.value = decodedText;
-                    console.log(`Start Location: ${decodedText}`);
+                    if (decodedText == "P599802764") {
+                        inputName = "room525"
+                    } else if (decodedText == "P599802705") {
+                        inputName = "room508"
+                    } else if (decodedText == "N1973127510") {
+                        inputName = "toiletMenLeftWing"
+                    } else if (decodedText == "P296532050") {
+                        inputName = "toiletWomenLeftWing"
+                    } else if (decodedText == "P599802761") {
+                        inputName = "room522"
+                    } else if (decodedText == "P599802706") {
+                        inputName = "room509"
+                    } else if (decodedText == "P599802760") {
+                        inputName = "room521"
+                    } else if (decodedText == "P599802728") {
+                        inputName = "room510"
+                    } else if (decodedText == "P599802759") {
+                        inputName = "room520"
+                    } else if (decodedText == "N503755643") {
+                        inputName = "Lobby"
+                    } else if (decodedText == "P599802737") {
+                        inputName = "room519"
+                    } else if (decodedText == "P599802729") {
+                        inputName = "room511"
+                    } else if (decodedText == "P599802730") {
+                        inputName = "room512"
+                    } else if (decodedText == "P1414015698") {
+                        inputName = "room518B"
+                    } else if (decodedText == "P1414015697") {
+                        inputName = "room518A"
+                    } else if (decodedText == "P1745006100") {
+                        inputName = "cornerRightWingTop"
+                    } else if (decodedText == "P1744999175") {
+                        inputName = "cornerRightWingMid"
+                    } else if (decodedText == "N1322516212") {
+                        inputName = "cornerRightWingBottomNode"
+                    } else if (decodedText == "P179493011") {
+                        inputName = "Kitchen"
+                    }
+                    console.log(`Start Location: ${inputName}`);
                     $('#scanner').hide();
                     $('#location').show();
-                    $('#qr2').show();
-                    showStartNode();
+                    showNode();
+                } else if (!secondTimeRun) {
+                    secondTimeRun = true;
+                    currentValue = decodedText;
+                    console.log(`Current Location: ${decodedText}`);
+                    $('#scanner').hide();
+                    $('#location').show();
                 }
             }
             var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250 });
             html5QrcodeScanner.render(onScanSuccess);
         });
 
-        // Display start location
-        function showStartNode() {
-            if (inputValue.value == "P599802764") {
-                $('#room525Start').show();
-                $('#room525').hide();
-            }
-            else if (inputValue.value == "P599802705") {
-                $('#room508Start').show();
-                $('#room508').hide();
-            }
-            else if (inputValue.value == "N1973127510") {
-                $('#toiletMenLeftWingStart').show();
-                $('#toiletMenLeftWing').hide();
-            }
-            else if (inputValue.value == "P296532050") {
-                $('#toiletWomenLeftWingStart').show();
-                $('#toiletWomenLeftWing').hide();
-            }
-            else if (inputValue.value == "P599802761") {
-                $('#room522Start').show();
-                $('#room522').hide();
-            }
-            else if (inputValue.value == "P599802706") {
-                $('#room509Start').show();
-                $('#room509').hide();
-            }
-            else if (inputValue.value == "P599802760") {
-                $('#room521Start').show();
-                $('#room521').hide();
-            }
-            else if (inputValue.value == "P599802728") {
-                $('#room510Start').show();
-                $('#room510').hide();
-            }
-            else if (inputValue.value == "P599802759") {
-                $('#room520Start').show();
-                $('#room520').hide();
-            }
-            else if (inputValue.value == "N503755643") {
-                $('#LobbyStart').show();
-                $('#Lobby').hide();
-            }
-            else if (inputValue.value == "P599802737") {
-                $('#room519Start').show();
-                $('#room519').hide();
-            }
-            else if (inputValue.value == "P599802729") {
-                $('#room511Start').show();
-                $('#room511').hide();
-            }
-            else if (inputValue.value == "P599802730") {
-                $('#room512Start').show();
-                $('#room512').hide();
-            }
-            else if (inputValue.value == "P1414015698") {
-                $('#room518BStart').show();
-                $('#room518B').hide();
-            }
-            else if (inputValue.value == "P1414015697") {
-                $('#room518AStart').show();
-                $('#room518A').hide();
-            }
-            else if (inputValue.value == "P1745006100") {
-                $('#cornerRightWingTopStart').show();
-                $('#cornerRightWingTop').hide();
-            }
-            else if (inputValue.value == "P1744999175") {
-                $('#cornerRightWingMidStart').show();
-                $('#cornerRightWingMid').hide();
-            }
-            else if (inputValue.value == "N1322516212") {
-                $('#cornerRightWingBottomStart').show();
-                $('#cornerRightWingBottom').hide();
-            }
-            else if (inputValue.value == "P179493011") {
-                $('#KitchenStart').show();
-                $('#Kitchen').hide();
-            }
-        } 
-
-        // Display end location
-        function showEndNode() {
-            if (selectValue.value == "null") {
-                $('#runButton').hide();
-            } else {
+        // Display node
+        function showNode() {
+            document.getElementById(inputName + "Node").style.display = 'block';
+            document.getElementById(inputName).style.display = 'none';
+            if (selectValue.value != "null") {
+                document.getElementById(selectValue.options[selectValue.selectedIndex].text + "Node").setAttribute('fill', 'red');
+                document.getElementById(selectValue.options[selectValue.selectedIndex].text + "Node").style.display = 'block';
+                console.log(`End Location: ${selectValue.options[selectValue.selectedIndex].text}`);
                 $('#runButton').show();
             }
-            if (selectValue.value == "P599802764") {
-                $('#room525End').show();
-            } else {
-                $('#room525End').hide();
-            }
-            if (selectValue.value == "P599802705") {
-                $('#room508End').show();
-            } else {
-                $('#room508End').hide();
-            }
-            if (selectValue.value == "N1973127510") {
-                $('#toiletMenLeftWingEnd').show();
-            } else {
-                $('#toiletMenLeftWingEnd').hide();
-            }
-            if (selectValue.value == "P296532050") {
-                $('#toiletWomenLeftWingEnd').show();
-            } else {
-                $('#toiletWomenLeftWingEnd').hide();
-            }
-            if (selectValue.value == "P599802761") {
-                $('#room522End').show();
-            } else {
-                $('#room522End').hide();
-            }
-            if (selectValue.value == "P599802706") {
-                $('#room509End').show();
-            } else {
-                $('#room509End').hide();
-            }
-            if (selectValue.value == "P599802760") {
-                $('#room521End').show();
-            } else {
-                $('#room521End').hide();
-            }
-            if (selectValue.value == "P599802728") {
-                $('#room510End').show();
-            } else {
-                $('#room510End').hide();
-            }
-            if (selectValue.value == "P599802759") {
-                $('#room520End').show();
-            } else {
-                $('#room520End').hide();
-            }
-            if (selectValue.value == "N503755643") {
-                $('#LobbyEnd').show();
-            } else {
-                $('#LobbyEnd').hide();
-            }
-            if (selectValue.value == "P599802737") {
-                $('#room519End').show();
-            } else {
-                $('#room519End').hide();
-            }
-            if (selectValue.value == "P599802729") {
-                $('#room511End').show();
-            } else {
-                $('#room511End').hide();
-            }
-            if (selectValue.value == "P599802730") {
-                $('#room512End').show();
-            } else {
-                $('#room512End').hide();
-            }
-            if (selectValue.value == "P1414015698") {
-                $('#room518BEnd').show();
-            } else {
-                $('#room518BEnd').hide();
-            }
-            if (selectValue.value == "P1414015697") {
-                $('#room518AEnd').show();
-            } else {
-                $('#room518AEnd').hide();
-            }
-            if (selectValue.value == "P1745006100") {
-                $('#cornerRightWingTopEnd').show();
-            } else {
-                $('#cornerRightWingTopEnd').hide();
-            }
-            if (selectValue.value == "P1744999175") {
-                $('#cornerRightWingMidEnd').show();
-            } else {
-                $('#cornerRightWingMidEnd').hide();
-            }
-            if (selectValue.value == "N1322516212") {
-                $('#cornerRightWingBottomEnd').show();
-            } else {
-                $('#cornerRightWingBottomEnd').hide();
-            }
-            if (selectValue.value == "P179493011") {
-                $('#KitchenEnd').show();
-            } else {
-                $('#KitchenEnd').hide();
-            }
-            console.log(`End Location: ${selectValue.value}`);
-        }
+            $('#checkInButton').hide();
+        } 
 
         // GET data
-        var shortestPath = [];
         const formEl = document.querySelector('.form');
         formEl.addEventListener('submit', () => {
             event.preventDefault();
@@ -355,6 +209,7 @@
             })
                 .then(res => res.json())
                 .then(data => {
+                    var shortestPath = [];
                     for (var i = 0; i < data.paths.length; i++) {
                         shortestPath.push(data.paths[i]);
                     }
@@ -362,7 +217,6 @@
 
                     // Display shortest path
                     $('#runButton').hide();
-                    $('#qr2').hide();
                     $('#checkInButton').show();
                     for (let i = 0; i < shortestPath.length; i++) {
                         if (i < (shortestPath.length - 1)) {
