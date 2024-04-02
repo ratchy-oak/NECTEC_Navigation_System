@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "0bfda8e7-65cb-4b45-881e-c9f33efcb2c2",
+		"name": "UNAI Navigate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "868265"
+	},
+	"item": [
+		{
+			"name": "graphList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/graphList",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "importGraphCollection",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Google Drive/myLibrary/nodeJS/path/importGraph.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/importGraphCollection",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"importGraphCollection"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "compileGraph",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"isSave\": true,\r\n    \"graph\": {\r\n        \"id\": \"DEMO\",\r\n        \"name\": \"floor1\",\r\n        \"file\": \"./images/floor1.jpg\",\r\n        \"bearingX\": 90,\r\n        \"pxOrigin\": 0,\r\n        \"pyOrigin\": 1000,\r\n        \"pixelPerMeter\": 20,\r\n        \"start\": \"A\",\r\n        \"stop\": \"F\",\r\n        \"nodes\": [\r\n            {\r\n                \"name\": \"A\",\r\n                \"point\": [\r\n                    0,\r\n                    0\r\n                ],\r\n                \"neightbors\": [\r\n                    \"B\",\r\n                    \"C\"\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"B\",\r\n                \"point\": [\r\n                    0,\r\n                    5\r\n                ],\r\n                \"neightbors\": [\r\n                    \"D\"\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"C\",\r\n                \"point\": [\r\n                    5,\r\n                    0\r\n                ],\r\n                \"neightbors\": [\r\n                    \"F\",\r\n                    \"A\"\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"D\",\r\n                \"point\": [\r\n                    5,\r\n                    5\r\n                ],\r\n                \"neightbors\": [\r\n                    \"B\",\r\n                    \"F\"\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"E\",\r\n                \"point\": [\r\n                    10,\r\n                    10\r\n                ],\r\n                \"neightbors\": [\r\n                    \"D\",\r\n                    \"F\"\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"F\",\r\n                \"point\": [\r\n                    15,\r\n                    2\r\n                ],\r\n                \"neightbors\": [\r\n                    \"D\",\r\n                    \"C\",\r\n                    \"E\"\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/compileGraph",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"compileGraph"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteGraph",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "DEMO3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/deleteGraph",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"deleteGraph"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getpath",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/getPath?qr1=N571175943&qr2=N571175941",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"getPath"
+					],
+					"query": [
+						{
+							"key": "qr1",
+							"value": "N571175943"
+						},
+						{
+							"key": "qr2",
+							"value": "N571175941"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "trafficPath",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"qr1\": \"N571175943\",\r\n    \"qr2\": \"N571175938\",\r\n    \"traffics\": [\r\n        {\r\n            \"node1\": \"A\",\r\n            \"node2\": \"C\",\r\n            \"type\": \"scale\",\r\n            \"value\": 10\r\n        },\r\n        {\r\n            \"node1\": \"B\",\r\n            \"node2\": \"C\",\r\n            \"type\": \"scale\",\r\n            \"value\": 1\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/trafficPath",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"trafficPath"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
