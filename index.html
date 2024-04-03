@@ -10,8 +10,8 @@
     <script src="https://unpkg.com/html5-qrcode"></script>
 </head>
 <body class="text-center">
-    <!-- Scanner display -->
-    <div id="scanner" style="display: block;">
+     <!-- Scanner display -->
+     <div id="scanner" style="display: block;">
         <h1 class="fw-bold mt-5">Scan Location QRcode</h1>
         <div class="mt-5" style="display: flex; justify-content: center;">
             <div id="qr-reader" style="width:500px"></div>
@@ -97,13 +97,17 @@
                     <circle id="KitchenNode" style="display: none;" r="3" cx="623" cy="138" fill="green" />
                 </svg>
             </div>
+            <!-- Map -->
             <img src="picture/map.jpg" style="width: 80vw;">
+            <h1 id="finish" class="fw-bold mt-5" style="display: none;">You've reached your destination.</h1>
         </div>
 
-        <!-- Change or Select or Submit value -->
-        <div class="container mt-3">
+         <!-- Form -->
+         <div class="container mt-3">
             <form class="form">    
+                <!-- Input start location -->
                 <input name="qr1" id="qr1" type="hidden">
+                <!-- Select end location -->
                 <div class="container">
                     <select name="qr2" id="qr2" class="form-control" style="appearance: listbox !important;" onchange="showNode()">
                         <option value="null" disabled selected>Select target position</option>
@@ -128,20 +132,21 @@
                         <option id="Kitchen" value="P179493011">Kitchen</option>
                     </select>
                 </div>
+                <!-- Change, Submit and Check-in button -->
                 <div class="column">
                     <button type="button" class="btn btn-danger btn-lg mt-4" onclick="window.location.reload();">Change start location</button>
                     <button type="submit" id="runButton" class="btn btn-warning btn-lg mt-4" style="display: none;">Find the shortest path</button>
-                    <button type="button" id="checkInButton" class="btn btn-outline-light btn-lg mt-4" style="display: none;" onclick="$('#scanner').show(), $('#location').hide(), secondTimeRun = false, document.getElementById(inputName + 'Node').setAttribute('fill', 'gray');">Check-in current location</button>
+                    <button type="button" id="checkInButton" class="btn btn-outline-light btn-lg mt-4" style="display: none;" onclick="checkIn()">Check-in current location</button>
                 </div>
             </form>
         </div>
     </div>
 
     <script>
-        // Start and End and Current location value
+        // Start, End and Path variable
         var inputValue = document.getElementById('qr1');
-        var selectValue = document.getElementById('qr2');
         var inputName;
+        var selectValue = document.getElementById('qr2');
         var selectName;
         var currentValue;
         var shortestPath = [];
@@ -157,6 +162,7 @@
         var secondTimeRun = true;
         docReady(function () {
             function onScanSuccess(decodedText, decodedResult) {
+                // Change decoded text to text
                 if (decodedText == "P599802764") {
                     inputName = "room525"
                 } else if (decodedText == "P599802705") {
@@ -196,20 +202,22 @@
                 } else if (decodedText == "P179493011") {
                     inputName = "Kitchen"
                 }
-                if (decodedText != inputValue.value) {
+                // Receive input value and convert to location data
+                if ((decodedText != inputValue.value) && (secondTimeRun == true)) {
                     inputValue.value = decodedText;
                     console.log(`Start Location: ${inputName}`);
                     $('#scanner').hide();
                     $('#location').show();
                     showNode();
-                } else if (!secondTimeRun) {
-                    secondTimeRun = true;
+                } else if ((decodedText != currentValue) && (secondTimeRun == false)) {
                     currentValue = decodedText;
                     console.log(`Current Location: ${inputName}`);
                     $('#scanner').hide();
                     $('#runButton').hide();
                     $('#location').show()
                     $('#checkInButton').show();
+                    document.getElementById(inputName + "Node").style.display = 'block';
+                    document.getElementById(inputName).style.display = 'none';
                     for (let i = shortestPath.indexOf(inputName); i < shortestPath.length; i++) {
                         if (i < (shortestPath.length - 1)) {
                             document.getElementById(shortestPath[i] + shortestPath[i + 1]).style.display = 'block';
@@ -222,14 +230,32 @@
                             document.getElementById(shortestPath[i] + shortestPath[i + 1]).style.display = 'block';
                         }
                     }
+                } else if ((decodedText == selectValue.value) && (secondTimeRun == false)) {
+                    currentValue = decodedText;
+                    console.log(`You've reached: ${inputName}`);
+                    $('#scanner').hide();
+                    $('#runButton').hide();
+                    $('#checkInButton').hide();
+                    $('#location').show();
+                    $('#finish').show();
+                    document.getElementById(inputName + "Node").setAttribute('fill', 'blue');
+                    document.getElementById(inputName + "Node").style.display = 'block';
                 }
             }
             var html5QrcodeScanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250 });
             html5QrcodeScanner.render(onScanSuccess);
-        }); 
+        });
+
+        // Check-in current location
+        function checkIn() {
+            secondTimeRun = false; 
+            $('#location').hide(); 
+            $('#qr2').hide(); 
+            $('#scanner').show();
+            document.getElementById(inputName + 'Node').setAttribute('fill', 'gray');
+        }
 
         // Display node
-        var changeNode = true;
         function showNode() {
             document.getElementById(inputName + "Node").style.display = 'block';
             document.getElementById(inputName).style.display = 'none';
@@ -249,9 +275,9 @@
                     document.getElementById(shortestPath[i] + shortestPath[i + 1]).style.display = 'none';
                 }
             }
-        } 
+        }
 
-        // GET data
+        // GET data from database
         const formEl = document.querySelector('.form');
         formEl.addEventListener('submit', () => {
             event.preventDefault();
@@ -265,7 +291,6 @@
                         shortestPath.push(data.paths[i]);
                     }
                     console.log(`Shortest Path: ${shortestPath}`);
-
                     // Display shortest path
                     $('#runButton').hide();
                     $('#checkInButton').show();
