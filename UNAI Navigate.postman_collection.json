@@ -25,6 +25,83 @@
 			"response": []
 		},
 		{
+			"name": "qrList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/qrList?graphId=DEMO",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"qrList"
+					],
+					"query": [
+						{
+							"key": "graphId",
+							"value": "DEMO"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "qrSearch",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/qrSearch?word=cornerRightWingBottom",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"qrSearch"
+					],
+					"query": [
+						{
+							"key": "word",
+							"value": "cornerRightWingBottom"
+						},
+						{
+							"key": "graphId",
+							"value": "NECTEC",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "qrInfo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/qrInfo?qr=N571175941",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"qrInfo"
+					],
+					"query": [
+						{
+							"key": "qr",
+							"value": "N571175941"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "importGraphCollection",
 			"request": {
 				"method": "POST",
@@ -53,13 +130,44 @@
 			"response": []
 		},
 		{
+			"name": "exportGraphCollection",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "localhost:3000/exportGraphCollection?type=txt",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"exportGraphCollection"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "txt"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "compileGraph",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"isSave\": true,\r\n    \"graph\": {\r\n        \"id\": \"DEMO\",\r\n        \"name\": \"floor1\",\r\n        \"file\": \"./images/floor1.jpg\",\r\n        \"bearingX\": 90,\r\n        \"pxOrigin\": 0,\r\n        \"pyOrigin\": 1000,\r\n        \"pixelPerMeter\": 20,\r\n        \"start\": \"A\",\r\n        \"stop\": \"F\",\r\n        \"nodes\": [\r\n            {\r\n                \"name\": \"A\",\r\n                \"point\": [\r\n                    0,\r\n                    0\r\n                ],\r\n                \"neightbors\": [\r\n                    \"B\",\r\n                    \"C\"\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"B\",\r\n                \"point\": [\r\n                    0,\r\n                    5\r\n                ],\r\n                \"neightbors\": [\r\n                    \"D\"\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"C\",\r\n                \"point\": [\r\n                    5,\r\n                    0\r\n                ],\r\n                \"neightbors\": [\r\n                    \"F\",\r\n                    \"A\"\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"D\",\r\n                \"point\": [\r\n                    5,\r\n                    5\r\n                ],\r\n                \"neightbors\": [\r\n                    \"B\",\r\n                    \"F\"\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"E\",\r\n                \"point\": [\r\n                    10,\r\n                    10\r\n                ],\r\n                \"neightbors\": [\r\n                    \"D\",\r\n                    \"F\"\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"F\",\r\n                \"point\": [\r\n                    15,\r\n                    2\r\n                ],\r\n                \"neightbors\": [\r\n                    \"D\",\r\n                    \"C\",\r\n                    \"E\"\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}",
+					"raw": "{\r\n    \"isSave\": true,\r\n    \"graph\": {\r\n        \"id\": \"DEMO3\",\r\n        \"name\": \"floor1\",\r\n        \"file\": \"./images/floor1.jpg\",\r\n        \"bearingX\": 90,\r\n        \"pxOrigin\": 0,\r\n        \"pyOrigin\": 1000,\r\n        \"pixelPerMeter\": 20,\r\n        \"start\": \"A\",\r\n        \"stop\": \"F\",\r\n        \"nodes\": [\r\n            {\r\n                \"name\": \"A\",\r\n                \"point\": [\r\n                    0,\r\n                    0\r\n                ],\r\n                \"neightbors\": [\r\n                    \"B\",\r\n                    \"C\"\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"B\",\r\n                \"point\": [\r\n                    0,\r\n                    5\r\n                ],\r\n                \"neightbors\": [\r\n                    \"D\"\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"C\",\r\n                \"point\": [\r\n                    5,\r\n                    0\r\n                ],\r\n                \"neightbors\": [\r\n                    \"F\",\r\n                    \"A\"\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"D\",\r\n                \"point\": [\r\n                    5,\r\n                    5\r\n                ],\r\n                \"neightbors\": [\r\n                    \"B\",\r\n                    \"F\"\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"E\",\r\n                \"point\": [\r\n                    10,\r\n                    10\r\n                ],\r\n                \"neightbors\": [\r\n                    \"D\",\r\n                    \"F\"\r\n                ]\r\n            },\r\n            {\r\n                \"name\": \"F\",\r\n                \"point\": [\r\n                    15,\r\n                    2\r\n                ],\r\n                \"neightbors\": [\r\n                    \"D\",\r\n                    \"C\",\r\n                    \"E\"\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -142,7 +250,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"qr1\": \"N571175943\",\r\n    \"qr2\": \"N571175938\",\r\n    \"traffics\": [\r\n        {\r\n            \"node1\": \"A\",\r\n            \"node2\": \"C\",\r\n            \"type\": \"scale\",\r\n            \"value\": 10\r\n        },\r\n        {\r\n            \"node1\": \"B\",\r\n            \"node2\": \"C\",\r\n            \"type\": \"scale\",\r\n            \"value\": 1\r\n        }\r\n    ]\r\n}",
+					"raw": "{\r\n    \"qr1\": \"N571175943\",\r\n    \"qr2\": \"N571175939\",\r\n    \"traffics\": [\r\n        {\r\n            \"node1\": \"A\",\r\n            \"node2\": \"B\",\r\n            \"type\": \"scale\",\r\n            \"value\": 5\r\n        }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
