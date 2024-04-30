@@ -1,0 +1,12 @@
+.polyline {
+    fill: none; 
+    stroke: blue; 
+    stroke-width: 2; 
+    display: none;
+}
+
+.compass {
+    position: absolute;
+    top: 5%; 
+    right: 10%;
+}
