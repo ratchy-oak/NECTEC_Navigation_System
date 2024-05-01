@@ -1,9 +1,12 @@
-.polyline {
-    fill: none; 
-    stroke: blue; 
-    stroke-width: 2; 
-    display: none;
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
+
+/* style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" */
 
 .compass {
     position: absolute;

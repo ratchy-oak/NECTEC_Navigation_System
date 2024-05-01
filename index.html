@@ -21,98 +21,96 @@
     </div>
 
     <!-- Map display -->
-    <div id="location" style="display: none;">
+    <div id="location" class="mt-5" style="display: none;">
         <!-- Node and Graph on map -->
-        <div class="container mt-5">
-            <div style="position: absolute; width: 80vw;">
-                <svg viewBox="0 0 700 300">
-                    <!-- Graph -->
-                    <polyline id="room525room508" class="polyline" points="187,105 207,88" />
-                    <polyline id="room508room525" class="polyline" points="187,105 207,88" />
-                    <polyline id="room508toiletMenLeftWing" class="polyline" points="207,88 207,186" />
-                    <polyline id="toiletMenLeftWingroom508" class="polyline" points="207,88 207,186" />
-                    <polyline id="toiletMenLeftWingtoiletWomenLeftWing" class="polyline" points="207,186 207,218" />
-                    <polyline id="toiletWomenLeftWingtoiletMenLeftWing" class="polyline" points="207,186 207,218" />
-                    <polyline id="room508room509" class="polyline" points="207,88 207,118 234,118" />
-                    <polyline id="room509room508" class="polyline" points="207,88 207,118 234,118" />
-                    <polyline id="toiletMenLeftWingroom509" class="polyline" points="207,186 207,118 234,118" />
-                    <polyline id="room509toiletMenLeftWing" class="polyline" points="207,186 207,118 234,118" />
-                    <polyline id="toiletMenLeftWingroom521" class="polyline" points="207,186 295,186" />
-                    <polyline id="room521toiletMenLeftWing" class="polyline" points="207,186 295,186" />
-                    <polyline id="room522room521" class="polyline" points="207,218 207,186 295,186" />
-                    <polyline id="room521room522" class="polyline" points="207,218 207,186 295,186" />
-                    <polyline id="room509room510" class="polyline" points="234,118 378,118" />
-                    <polyline id="room510room509" class="polyline" points="234,118 378,118" />
-                    <polyline id="room521room520" class="polyline" points="295,186 377,186" />
-                    <polyline id="room520room521" class="polyline" points="295,186 377,186" />
-                    <polyline id="room510room520" class="polyline" points="378,118 377,186" />
-                    <polyline id="room520room510" class="polyline" points="378,118 377,186" />
-                    <polyline id="room510Lobby" class="polyline" points="378,118 401,152" />
-                    <polyline id="Lobbyroom510" class="polyline" points="378,118 401,152" />
-                    <polyline id="room520Lobby" class="polyline" points="377,186 401,152" />
-                    <polyline id="Lobbyroom520" class="polyline" points="377,186 401,152" />
-                    <polyline id="room520room519" class="polyline" points="377,186 425,186" />
-                    <polyline id="room519room520" class="polyline" points="377,186 425,186" />
-                    <polyline id="Lobbyroom519" class="polyline" points="401,152 425,186" />
-                    <polyline id="room519Lobby" class="polyline" points="401,152 425,186" />
-                    <polyline id="room510room511" class="polyline" points="378,118 458,118" />
-                    <polyline id="room511room510" class="polyline" points="378,118 458,118" />
-                    <polyline id="Lobbyroom511" class="polyline" points="401,152 458,118" />
-                    <polyline id="room511Lobby" class="polyline" points="401,152 458,118" />
-                    <polyline id="room519room511" class="polyline" points="425,186 425,138 458,118" />
-                    <polyline id="room511room519" class="polyline" points="425,186 425,138 458,118" />
-                    <polyline id="room511room512" class="polyline" points="458,118 522,118" />
-                    <polyline id="room512room511" class="polyline" points="458,118 522,118" />
-                    <polyline id="room519room518B" class="polyline" points="425,186 529,186" />
-                    <polyline id="room518Broom519" class="polyline" points="425,186 529,186" />
-                    <polyline id="room518Broom518A" class="polyline" points="529,186 570,186" />
-                    <polyline id="room518Aroom518B" class="polyline" points="529,186 570,186" />
-                    <polyline id="room512cornerRightWingTop" class="polyline" points="522,118 598,118" />
-                    <polyline id="cornerRightWingToproom512" class="polyline" points="522,118 598,118" />
-                    <polyline id="cornerRightWingTopcornerRightWingMid" class="polyline" points="598,118 598,145" />
-                    <polyline id="cornerRightWingMidcornerRightWingTop" class="polyline" points="598,118 598,145" />
-                    <polyline id="room518AcornerRightWingBottom" class="polyline" points="570,186 598,186" />
-                    <polyline id="cornerRightWingBottomroom518A" class="polyline" points="570,186 598,186" />
-                    <polyline id="cornerRightWingMidcornerRightWingBottom" class="polyline" points="598,145 598,186" />
-                    <polyline id="cornerRightWingBottomcornerRightWingMid" class="polyline" points="598,145 598,186" />
-                    <polyline id="cornerRightWingMidKitchen" class="polyline" points="598,145 623,138" />
-                    <polyline id="KitchencornerRightWingMid" class="polyline" points="598,145 623,138" />
-                    <!-- Node -->
-                    <circle id="room525Node" style="display: none;" r="3" fill="green" cx="187" cy="105" />
-                    <circle id="room508Node" style="display: none;" r="3" fill="green" cx="207" cy="88" />
-                    <circle id="toiletMenLeftWingNode" style="display: none;" r="3" fill="green" cx="207" cy="186" />
-                    <circle id="toiletWomenLeftWingNode" style="display: none;" r="3" fill="green" cx="207" cy="218" />
-                    <circle id="room522Node" style="display: none;" r="3" fill="green" cx="207" cy="218" />
-                    <circle id="room509Node" style="display: none;" r="3" fill="green" cx="234" cy="118" />
-                    <circle id="room521Node" style="display: none;" r="3" fill="green" cx="295" cy="186" />
-                    <circle id="room510Node" style="display: none;" r="3" fill="green" cx="378" cy="118" />
-                    <circle id="room520Node" style="display: none;" r="3" fill="green" cx="377" cy="186" />
-                    <circle id="LobbyNode" style="display: none;" r="3" fill="green" cx="401" cy="152" />
-                    <circle id="room519Node" style="display: none;" r="3" fill="green" cx="425" cy="186" />
-                    <circle id="room511Node" style="display: none;" r="3" fill="green" cx="458" cy="118" />
-                    <circle id="room512Node" style="display: none;" r="3" fill="green" cx="522" cy="118" />
-                    <circle id="room518BNode" style="display: none;" r="3" fill="green" cx="529" cy="186" />
-                    <circle id="room518ANode" style="display: none;" r="3" fill="green" cx="570" cy="186" />
-                    <circle id="cornerRightWingTopNode" style="display: none;" r="3" fill="green" cx="598" cy="118" />
-                    <circle id="cornerRightWingMidNode" style="display: none;" r="3" fill="green" cx="598" cy="145" />
-                    <circle id="cornerRightWingBottomNode" style="display: none;" r="3" fill="green" cx="598" cy="186" />
-                    <circle id="KitchenNode" style="display: none;" r="3" fill="green" cx="623" cy="138" />
-                </svg>
-            </div>
-            <!-- Compass -->
-            <img id="N" src="picture/north.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
-            <img id="S" src="picture/south.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
-            <img id="W" src="picture/west.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
-            <img id="E" src="picture/east.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
-            <img id="NW" src="picture/northwest.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
-            <img id="NE" src="picture/northeast.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
-            <img id="SW" src="picture/southwest.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
-            <img id="SE" src="picture/southeast.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
-            <img id="finishPin" src="picture/finish.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
-            <!-- Map -->
-            <img src="picture/map.jpg" style="width: 80vw;">
-            <h1 id="finish" class="fw-bold mt-3" style="display: none;">You've reached your destination.</h1>
+        <div style="position: absolute; width: 100%;">
+            <svg viewBox="0 0 1920 650">
+                <!-- Graph -->
+                <polyline id="room525room508" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="602,230 647,194" />
+                <polyline id="room508room525" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="602,230 647,194" />
+                <polyline id="room508toiletMenLeftWing" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="647,194 647,409" />
+                <polyline id="toiletMenLeftWingroom508" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="647,194 647,409" />
+                <polyline id="toiletMenLeftWingtoiletWomenLeftWing" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="647,409 647,462" />
+                <polyline id="toiletWomenLeftWingtoiletMenLeftWing" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="647,409 647,462" />
+                <polyline id="room508room509" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="647,194 647,257 707,257" />
+                <polyline id="room509room508" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="647,194 647,257 707,257" />
+                <polyline id="toiletMenLeftWingroom509" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="647,409 647,257 707,257" />
+                <polyline id="room509toiletMenLeftWing" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="647,409 647,257 707,257" />
+                <polyline id="toiletMenLeftWingroom521" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="647,409 839,409" />
+                <polyline id="room521toiletMenLeftWing" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="647,409 839,409" />
+                <polyline id="room522room521" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="647,479 647,409 839,409" />
+                <polyline id="room521room522" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="647,479 647,409 839,409" />
+                <polyline id="room509room510" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="707,257 1024,260" />
+                <polyline id="room510room509" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="707,257 1024,260" />
+                <polyline id="room521room520" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="839,409 1019,409" />
+                <polyline id="room520room521" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="839,409 1019,409" />
+                <polyline id="room510room520" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1024,260 1019,409" />
+                <polyline id="room520room510" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1024,260 1019,409" />
+                <polyline id="room510Lobby" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1024,260 1075,334" />
+                <polyline id="Lobbyroom510" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1024,260 1075,334" />
+                <polyline id="room520Lobby" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1019,409 1075,334" />
+                <polyline id="Lobbyroom520" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1019,409 1075,334" />
+                <polyline id="room520room519" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1019,409 1126,409" />
+                <polyline id="room519room520" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1019,409 1126,409" />
+                <polyline id="Lobbyroom519" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1075,334 1126,409" />
+                <polyline id="room519Lobby" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1075,334 1126,409" />
+                <polyline id="room510room511" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1024,260 1198,257" />
+                <polyline id="room511room510" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1024,260 1198,257" />
+                <polyline id="Lobbyroom511" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1075,334 1198,257" />
+                <polyline id="room511Lobby" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1075,334 1198,257" />
+                <polyline id="room519room511" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1126,409 1126,303 1198,257" />
+                <polyline id="room511room519" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1126,409 1126,303 1198,257" />
+                <polyline id="room511room512" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1198,257 1338,257" />
+                <polyline id="room512room511" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1198,257 1338,257" />
+                <polyline id="room519room518B" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1126,409 1352,409" />
+                <polyline id="room518Broom519" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1126,409 1352,409" />
+                <polyline id="room518Broom518A" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1352,409 1442,409" />
+                <polyline id="room518Aroom518B" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1352,409 1442,409" />
+                <polyline id="room512cornerRightWingTop" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1338,257 1505,257" />
+                <polyline id="cornerRightWingToproom512" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1338,257 1505,257" />
+                <polyline id="cornerRightWingTopcornerRightWingMid" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1505,257 1505,319" />
+                <polyline id="cornerRightWingMidcornerRightWingTop" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1505,257 1505,319" />
+                <polyline id="room518AcornerRightWingBottom" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1442,409 1505,409" />
+                <polyline id="cornerRightWingBottomroom518A" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1442,409 1505,409" />
+                <polyline id="cornerRightWingMidcornerRightWingBottom" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1505,319 1505,409" />
+                <polyline id="cornerRightWingBottomcornerRightWingMid" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1505,319 1505,409" />
+                <polyline id="cornerRightWingMidKitchen" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1505,319 1560,304" />
+                <polyline id="KitchencornerRightWingMid" style="fill: none; stroke: blue; stroke-width: 4.5; display: none;" points="1505,319 1560,304" />
+                <!-- Node -->
+                <circle id="room525Node" style="display: none;" r="5.5" fill="green" cx="602" cy="230" />
+                <circle id="room508Node" style="display: none;" r="5.5" fill="green" cx="647" cy="194" />
+                <circle id="toiletMenLeftWingNode" style="display: none;" r="5.5" fill="green" cx="647" cy="409" />
+                <circle id="toiletWomenLeftWingNode" style="display: none;" r="5.5" fill="green" cx="647" cy="462" />
+                <circle id="room522Node" style="display: none;" r="5.5" fill="green" cx="647" cy="479" />
+                <circle id="room509Node" style="display: none;" r="5.5" fill="green" cx="707" cy="257" />
+                <circle id="room521Node" style="display: none;" r="5.5" fill="green" cx="839" cy="409" />
+                <circle id="room510Node" style="display: none;" r="5.5" fill="green" cx="1024" cy="260" />
+                <circle id="room520Node" style="display: none;" r="5.5" fill="green" cx="1019" cy="409" />
+                <circle id="LobbyNode" style="display: none;" r="5.5  " fill="green" cx="1075" cy="334" />
+                <circle id="room519Node" style="display: none;" r="5.5" fill="green" cx="1126" cy="409" />
+                <circle id="room511Node" style="display: none;" r="5.5" fill="green" cx="1198" cy="257" />
+                <circle id="room512Node" style="display: none;" r="5.5" fill="green" cx="1338" cy="257" />
+                <circle id="room518BNode" style="display: none;" r="5.5" fill="green" cx="1352" cy="409" />
+                <circle id="room518ANode" style="display: none;" r="5.5" fill="green" cx="1442" cy="409" />
+                <circle id="cornerRightWingTopNode" style="display: none;" r="5.5" fill="green" cx="1505" cy="257" />
+                <circle id="cornerRightWingMidNode" style="display: none;" r="5.5" fill="green" cx="1505" cy="319" />
+                <circle id="cornerRightWingBottomNode" style="display: none;" r="5.5" fill="green" cx="1505" cy="409" />
+                <circle id="KitchenNode" style="display: none;" r="5.5" fill="green" cx="1560" cy="304" />
+            </svg>
         </div>
+        <!-- Compass -->
+        <img id="N" src="picture/north.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
+        <img id="S" src="picture/south.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
+        <img id="W" src="picture/west.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
+        <img id="E" src="picture/east.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
+        <img id="NW" src="picture/northwest.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
+        <img id="NE" src="picture/northeast.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
+        <img id="SW" src="picture/southwest.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
+        <img id="SE" src="picture/southeast.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
+        <img id="finishPin" src="picture/finish.png" width="10%" style="position: absolute; top: 5%; right: 10%; display: none;">
+        <!-- Map -->
+        <img src="picture/map.jpg" style="width: 80vw;">
+        <h1 id="finish" class="fw-bold mt-3" style="display: none;">You've reached your destination.</h1>
 
          <!-- Form -->
          <div class="container">
@@ -237,7 +235,7 @@
                         document.getElementById(inputName).style.display = 'none';
                         for (let i = 0; i < shortestPath.indexOf(inputName); i++) {
                             if (i < (shortestPath.length - 1)) {
-                                document.getElementById(shortestPath[i] + shortestPath[i + 1]).setAttribute('stroke-dasharray', '4 2');
+                                document.getElementById(shortestPath[i] + shortestPath[i + 1]).setAttribute('stroke-dasharray', '7 4');
                                 document.getElementById(shortestPath[i] + shortestPath[i + 1]).style.stroke = "gray";
                                 document.getElementById(shortestPath[i] + shortestPath[i + 1]).style.display = 'block';
                             }
